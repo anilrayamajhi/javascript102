@@ -1,18 +1,28 @@
 import React from "react";
-import Components from "./components";
 
-function App() {
-  return (
-    <div className="App">
-    <Components />
-      <div>
-        <input id="input1" type="text" />
+class App extends React.Component {
+  state = {
+    value: null,
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value * 2,
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <input id="input1" type="text" onChange={this.handleChange} />
+        </div>
+        <div>
+          2x Result: <span id="result">{this.state.value}</span>
+        </div>
       </div>
-      <div>
-        2x Result: <span id="result" />
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
